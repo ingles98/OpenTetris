@@ -28,9 +28,24 @@ function GAME_STATS:goalCheck()
         self.goal = math.floor(600*self.level + 2.1^self.level)
         self.PPL = math.floor(self.PPL + 1.07^self.level)
         self.PPD = math.floor(self.PPD + 1.06^self.level)
-        
-        UPDATE_DELAY = 500 - (450*(self.level/10)) /1000
+
+        UPDATE_DELAY = (500 - (450*(self.level/7)) ) /1000
+    elseif love.keyboard.isDown("return") and GAME_OVER and not GAME_LEVEL_UP then
+        self:restart()
     end
+
+end
+
+function GAME_STATS:restart()
+    self.level = 1
+    self.score = 0
+    GAME_OVER = false
+    GAME_LEVEL_UP = false
+    GRID:clear()
+    self.goal = math.floor(600*self.level + 2.1^self.level)
+    self.PPL = math.floor(self.PPL + 1.07^self.level)
+    self.PPD = math.floor(self.PPD + 1.06^self.level)
+    UPDATE_DELAY = (500 - (450*(self.level/7)) ) /1000
 end
 
 -------
