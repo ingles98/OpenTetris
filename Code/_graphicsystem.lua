@@ -90,9 +90,20 @@ function GUI:draw()
 end
 
 GRAPHICSYS = {}
+GRAPHICSYS.anim_draw_queue = {}
+GRAPHICSYS.anim_update_queue = {}
 
 function GRAPHICSYS:draw()
     GRID:draw()
     GAMESYS:draw_CurrentTetromino()
 	GUI:draw()
+	for k,v in ipairs(self.anim_draw_queue) do
+		v:draw()
+	end
+end
+
+function GRAPHICSYS:update()
+	for k,v in ipairs(self.anim_update_queue) do
+		v:fixedUpdate()
+	end
 end

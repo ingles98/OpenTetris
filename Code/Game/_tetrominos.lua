@@ -63,7 +63,8 @@ function randomTETROMINO ()
     else
         tbl = STIGMA_LIB.pick(TETROMINO_LINE,TETROMINO_QUAD,TETROMINO_T,TETROMINO_L_LEFT,TETROMINO_L_RIGHT,TETROMINO_S_LEFT,TETROMINO_S_RIGHT)
     end
-    tbl.x = math.floor(GRID_W/2 - #tbl.grid/2)
+	print(love.getVersion())
+    tbl.x = math.floor(GRID_W/2 - (#tbl.grid)/2)
     tbl.y = -3
 
     return tbl

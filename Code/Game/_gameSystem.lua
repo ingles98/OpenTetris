@@ -84,26 +84,36 @@ function GAME_STATS:checkLine(index)
     end
 
     if count == GRID_W -1 then
+		
+        if Animation_line_obj then return end
         SOUND_DROP:stop()
         SOUND_LINE:stop()
         SOUND_LINE:play()
-        self:addScore(200)
-        for x = #GRID.grid, 1, -1 do
-            for y = index, 1, -1 do
-                local i = x
-                local j = y
-                if y == index then
-                    GRID.grid[i][j].rgb = {0.4,0.4,0.4,1}
-                    GRID.grid[i][j].density = 0
-                elseif GRID.grid[x][y].density == 1 then
-                    GRID.grid[i][j +1].density = 1
-                    GRID.grid[i][j +1].rgb = GRID.grid[i][j].rgb
+        Animation_line_obj = Animation_line:new({x = GAME_OFFSET_X + TILE_SIZE, y = GAME_OFFSET_Y + TILE_SIZE*(index) ,color = {1,0.15,0.1,0}})
+        --Animation_line_obj:setTimeOut(5)
+        function Animation_line_obj:onEnd()
+            for x = #GRID.grid, 1, -1 do
+                for y = index, 1, -1 do
+                    local i = x
+                    local j = y
+                    if y == index then
+                        GRID.grid[i][j].rgb = {0.4,0.4,0.4,1}
+                        GRID.grid[i][j].density = 0
+                    elseif GRID.grid[x][y].density == 1 then
+                        GRID.grid[i][j +1].density = 1
+                        GRID.grid[i][j +1].rgb = GRID.grid[i][j].rgb
 
-                    GRID.grid[i][j].rgb = {0.4,0.4,0.4,1}
-                    GRID.grid[i][j].density = 0
+                        GRID.grid[i][j].rgb = {0.4,0.4,0.4,1}
+                        GRID.grid[i][j].density = 0
+                    end
                 end
             end
+            Animation_line_obj = null
+            ANIM_PAUSE = false
         end
+        Animation_line_obj:start()
+        ANIM_PAUSE = true
+        self:addScore(200)
 
     end
 end

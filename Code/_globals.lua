@@ -19,7 +19,10 @@ LAST_SIDEMOVE = love.timer.getTime( )
 KEY_DELAY = 100/1000
 LAST_ROTATE = love.timer.getTime()
 
-DEF_FONT = love.graphics.newFont(PATH_RES_FONT.."PressStart2P/PressStart2P.ttf", 15)
+DEF_FONT_SIZE = 15
 DEF_FONT_BIG_SIZE = 22
+DEF_FONT = love.graphics.newFont(PATH_RES_FONT.."PressStart2P/PressStart2P.ttf", DEF_FONT_SIZE)
 DEF_FONT_BIG = love.graphics.newFont(PATH_RES_FONT.."PressStart2P/PressStart2P.ttf", DEF_FONT_BIG_SIZE)
 love.graphics.setFont(DEF_FONT)
+
+DEBUG_GPU = false
