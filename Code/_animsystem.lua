@@ -1,3 +1,5 @@
+local delta_time = love.timer.getTime()
+------
 local ANIM_TBL = {}
 local _anim = { --super class
     time_out = 0,
@@ -86,3 +88,5 @@ GLOBAL_ANIMSYS.anim_class = _anim
 Animation = GLOBAL_ANIMSYS.anim_class
 ANIM_PAUSE = false
 -----
+
+DEBUG:log("_animsystem.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")

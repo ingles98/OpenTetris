@@ -1,3 +1,5 @@
+local delta_time = love.timer.getTime()
+-----
 GUI = {} -- GLOBAL
 function GUI:draw()
 	local offsetX = love.graphics.getWidth() /2 + love.graphics.getWidth()/14
@@ -107,3 +109,6 @@ function GRAPHICSYS:update()
 		v:fixedUpdate()
 	end
 end
+
+---------
+DEBUG:log("_graphicsystem.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")

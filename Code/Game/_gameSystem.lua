@@ -1,3 +1,6 @@
+local delta_time = love.timer.getTime()
+---------------
+
 local GAME_STATS = {score = 0, level = 1, highscore = 0}
 GAME_STATS.LPS = 0.5 --Points Loss per second
 GAME_STATS.PPD = 2 -- Points per drop
@@ -84,7 +87,7 @@ function GAME_STATS:checkLine(index)
     end
 
     if count == GRID_W -1 then
-		
+
         if Animation_line_obj then return end
         SOUND_DROP:stop()
         SOUND_LINE:stop()
@@ -235,4 +238,7 @@ function GAME_STATS:update()
 end
 
 ---------
+DEBUG:log("_gameSystem.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")
 return GAME_STATS
+
+--------------

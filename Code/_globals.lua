@@ -1,3 +1,6 @@
+local delta_time = love.timer.getTime()
+-------
+
 GRID_W = 10 +1
 GRID_H = 15 +1
 TILE_SIZE = 32
@@ -26,3 +29,6 @@ DEF_FONT_BIG = love.graphics.newFont(PATH_RES_FONT.."PressStart2P/PressStart2P.t
 love.graphics.setFont(DEF_FONT)
 
 DEBUG_GPU = false
+
+-----------------
+DEBUG:log("_globals.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")

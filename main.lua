@@ -1,5 +1,14 @@
-require '__startup'
+io.stdout:setvbuf('no')
 
+DEBUG_LOG_FILENAME = os.time(os.date("!*t"))
+local date = os.date("%Y-%B")
+love.filesystem.createDirectory("Logs/"..date )
+DEBUG_LOG_FILE = love.filesystem.newFile("Logs/"..date.."/"..DEBUG_LOG_FILENAME..".txt")
+DEBUG_LOG_FILE:open("w")
+
+local startup_start_time = love.timer.getTime()
+require '__startup'
+DEBUG:log("Startup loaded. Took "..math.floor( (love.timer.getTime() - startup_start_time)*1000 ).."ms." )
 ------------------------------------------------------------------------------------------------
 
 function love.update(dt)
@@ -35,6 +44,10 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
 	if key == "f3" then
-		DEBUG_GPU = not DEBUG_GPU
+		DEBUG.gpu.active = not DEBUG.gpu.active
 	end
+end
+
+function love.quit()
+    DEBUG_LOG_FILE:close()
 end

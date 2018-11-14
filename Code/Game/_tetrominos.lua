@@ -1,3 +1,4 @@
+local delta_time = love.timer.getTime()
 TETROMINO_LINE = {
     grid = {
         {1,1,1,1}
@@ -63,9 +64,10 @@ function randomTETROMINO ()
     else
         tbl = STIGMA_LIB.pick(TETROMINO_LINE,TETROMINO_QUAD,TETROMINO_T,TETROMINO_L_LEFT,TETROMINO_L_RIGHT,TETROMINO_S_LEFT,TETROMINO_S_RIGHT)
     end
-	print(love.getVersion())
     tbl.x = math.floor(GRID_W/2 - (#tbl.grid)/2)
     tbl.y = -3
 
     return tbl
 end
+
+DEBUG:log("_tetrominos.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")

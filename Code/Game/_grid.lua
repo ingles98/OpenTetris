@@ -1,3 +1,6 @@
+local delta_time = love.timer.getTime()
+-----
+
 GRID = {}
 GRID.tileX = 0
 GRID.tileY = 0
@@ -26,4 +29,5 @@ function GRID:draw()
     end
 end
 
+DEBUG:log("_grid.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")
 return GRID

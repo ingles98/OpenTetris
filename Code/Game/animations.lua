@@ -1,3 +1,6 @@
+local delta_time = love.timer.getTime()
+----
+
 Animation_line = Animation:new()
 Animation_line:setTimeOut(0.9)
 function Animation_line:draw()
@@ -13,3 +16,6 @@ function Animation_line:update()
 	local alpha = self.vars.color[4] + 0.05
 	self.vars.color[4] = alpha
 end
+
+----
+DEBUG:log("_animations.lua loaded. Took "..math.floor( (love.timer.getTime() - delta_time)*1000 ).."ms.")
