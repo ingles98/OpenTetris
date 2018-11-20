@@ -1,13 +1,22 @@
 local delta_time = love.timer.getTime()
 -----
+
+function love.draw()
+	TLfres.beginRendering(1080, 1920)
+    GRAPHICSYS:draw()
+	DEBUG:draw()
+	TLfres.endRendering()
+end
+
+----
 GUI = {} -- GLOBAL
 function GUI:draw()
-	local offsetX = love.graphics.getWidth() /2 + love.graphics.getWidth()/14
-	local offsetY = love.graphics.getHeight() /10
+	local offsetX = 1080 /10
+	local offsetY = 4*1920 /5
 
 	love.graphics.setFont(DEF_FONT_BIG)
 	love.graphics.setColor(1,1,1,1)
-	love.graphics.printf( "NEXT: ", offsetX, offsetY, 200, "left")
+	love.graphics.printf( "NEXT: ", offsetX, offsetY, 1080, "left")
 
 	if (NEXT_TETROMINO) then
         for i,v in ipairs(NEXT_TETROMINO.grid) do
@@ -26,11 +35,11 @@ function GUI:draw()
         end
     end
 
-	offsetY = offsetY + love.graphics.getHeight()/16
+	offsetY = offsetY + 1920/16
 	love.graphics.setColor(1,1,1,1)
-	love.graphics.printf( "LEVEL: "..GAMESYS.level, offsetX, offsetY, 200, "left")
-	love.graphics.printf( "SCORE: "..math.floor(GAMESYS.score), offsetX, offsetY + DEF_FONT_BIG_SIZE +4, 900, "left")
-    love.graphics.printf( "GOAL: "..math.floor(GAMESYS.goal), offsetX, offsetY + 2*DEF_FONT_BIG_SIZE +4*2, 900, "left")
+	love.graphics.printf( "LEVEL: "..GAMESYS.level, offsetX, offsetY, 1080, "left")
+	love.graphics.printf( "SCORE: "..math.floor(GAMESYS.score), offsetX, offsetY + DEF_FONT_BIG_SIZE +4, 1080, "left")
+    love.graphics.printf( "GOAL: "..math.floor(GAMESYS.goal), offsetX, offsetY + 2*DEF_FONT_BIG_SIZE +4*2, 1080, "left")
 
 	if GAME_OVER and not GAME_LEVEL_UP then
 		---	RECTANGLE FOR THE TEXT BOX

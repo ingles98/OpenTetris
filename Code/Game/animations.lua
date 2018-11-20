@@ -2,7 +2,7 @@ local delta_time = love.timer.getTime()
 ----
 
 Animation_line = Animation:new()
-Animation_line:setTimeOut(0.9)
+Animation_line:setTimeOut(0.7)
 function Animation_line:draw()
 	love.graphics.setColor(self.vars.color)
 	love.graphics.rectangle("fill", self.vars.x, self.vars.y, (GRID_W-1) *TILE_SIZE, TILE_SIZE)

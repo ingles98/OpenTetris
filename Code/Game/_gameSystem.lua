@@ -93,7 +93,6 @@ function GAME_STATS:checkLine(index)
         SOUND_LINE:stop()
         SOUND_LINE:play()
         Animation_line_obj = Animation_line:new({x = GAME_OFFSET_X + TILE_SIZE, y = GAME_OFFSET_Y + TILE_SIZE*(index) ,color = {1,0.15,0.1,0}})
-        --Animation_line_obj:setTimeOut(5)
         function Animation_line_obj:onEnd()
             for x = #GRID.grid, 1, -1 do
                 for y = index, 1, -1 do

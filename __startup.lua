@@ -1,6 +1,7 @@
 PATH_CODE = "Code/"
 require (PATH_CODE..'_defines')
 STIGMA_LIB = require (PATH_LIB..'lua-stigma-lib/StigmaLib')
+TLfres = require(PATH_CODE..'TLfres')
 require (PATH_CODE..'_debug')
 require (PATH_CODE..'_globals')
 GAMESYS = require (PATH_CODE_GAMESYSTEM..'_gameSystem')

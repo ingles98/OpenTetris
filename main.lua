@@ -33,10 +33,6 @@ function love.update(dt)
     GRAPHICSYS:update()
 end
 
-function love.draw()
-    GRAPHICSYS:draw()
-	DEBUG:draw()
-end
 
 function love.load()
     GRID:clear()
