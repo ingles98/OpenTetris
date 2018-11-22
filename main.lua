@@ -1,5 +1,4 @@
 io.stdout:setvbuf('no')
-
 DEBUG_LOG_FILENAME = os.time(os.date("!*t"))
 local date = os.date("%Y-%B")
 love.filesystem.createDirectory("Logs/"..date )

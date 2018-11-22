@@ -43,15 +43,15 @@ function GUI:draw()
 
 	if GAME_OVER and not GAME_LEVEL_UP then
 		---	RECTANGLE FOR THE TEXT BOX
-		local rec_w = love.graphics.getWidth() /3
-		local rec_h = love.graphics.getHeight() / 4
+		local rec_w = 1080 /3
+		local rec_h = 1920 / 4
 		love.graphics.setColor(1,1,1,0.6)
-		love.graphics.rectangle( "fill", love.graphics.getWidth()/2 - rec_w/2, love.graphics.getHeight()/2 - rec_h/2, rec_w, rec_h , rec_w/10, rec_w/10 )
+		love.graphics.rectangle( "fill", 1080/2 - rec_w/2, 1920/2 - rec_h/2, rec_w, rec_h , rec_w/10, rec_w/10 )
 
 		--- GAME OVER TEXT
 		love.graphics.setColor(0,0,0,1)
 		love.graphics.setFont(DEF_FONT_BIG)
-		love.graphics.printf( "GAME OVER", love.graphics.getWidth()/2 - rec_w/2 + rec_w/12, love.graphics.getHeight()/2 - rec_h/4, rec_w - 2*(rec_w/12), "center")
+		love.graphics.printf( "GAME OVER", 1080/2 - rec_w/2 + rec_w/12, 1920/2 - rec_h/4, rec_w - 2*(rec_w/12), "center")
 
 		--- GAME OVER "Press ENTER to restart." TEXT
 		if not ANIM_PRESS_START_FADE then ANIM_PRESS_START_FADE = 0 end
@@ -68,18 +68,18 @@ function GUI:draw()
 
 		love.graphics.setColor(0,0,0,fadeTime)
 		love.graphics.setFont(DEF_FONT)
-		love.graphics.printf("Press ENTER to restart.", love.graphics.getWidth()/2 - rec_w/2 + rec_w/12, love.graphics.getHeight()/2 + rec_h/5, rec_w - 2*(rec_w/12), "center")
+		love.graphics.printf("Press ENTER to restart.", 1080/2 - rec_w/2 + rec_w/12, 1920/2 + rec_h/5, rec_w - 2*(rec_w/12), "center")
     elseif GAME_OVER and GAME_LEVEL_UP then
         ---	RECTANGLE FOR THE TEXT BOX
-		local rec_w = love.graphics.getWidth() /3
-		local rec_h = love.graphics.getHeight() / 4
+		local rec_w = 1920 /3
+		local rec_h = 1080 / 4
 		love.graphics.setColor(1,1,1,0.6)
-		love.graphics.rectangle( "fill", love.graphics.getWidth()/2 - rec_w/2, love.graphics.getHeight()/2 - rec_h/2, rec_w, rec_h , rec_w/10, rec_w/10 )
+		love.graphics.rectangle( "fill", 1080/2 - rec_w/2, 1920/2 - rec_h/2, rec_w, rec_h , rec_w/10, rec_w/10 )
 
 		--- LEVEL UP TEXT
 		love.graphics.setColor(0,0,0,1)
 		love.graphics.setFont(DEF_FONT_BIG)
-		love.graphics.printf( "LEVEL UP!", love.graphics.getWidth()/2 - rec_w/2 + rec_w/12, love.graphics.getHeight()/2 - rec_h/4, rec_w - 2*(rec_w/12), "center")
+		love.graphics.printf( "LEVEL UP!", 1080/2 - rec_w/2 + rec_w/12, 1920/2 - rec_h/4, rec_w - 2*(rec_w/12), "center")
 
 		--- LEVEL UP "Press ENTER to proceed." TEXT
 		if not ANIM_PRESS_START_FADE then ANIM_PRESS_START_FADE = 0 end
@@ -96,7 +96,7 @@ function GUI:draw()
 
 		love.graphics.setColor(0,0,0,fadeTime)
 		love.graphics.setFont(DEF_FONT)
-		love.graphics.printf("Press ENTER to proceed.", love.graphics.getWidth()/2 - rec_w/2 + rec_w/12, love.graphics.getHeight()/2 + rec_h/5, rec_w - 2*(rec_w/12), "center")
+		love.graphics.printf("Press ENTER to proceed.", 1080/2 - rec_w/2 + rec_w/12, 1920/2 + rec_h/5, rec_w - 2*(rec_w/12), "center")
 	end
 end
 

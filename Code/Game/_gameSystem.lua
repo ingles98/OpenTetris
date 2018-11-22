@@ -23,7 +23,7 @@ function GAME_STATS:goalCheck()
         GAME_OVER = true
         GAME_LEVEL_UP = true
     end
-    if love.keyboard.isDown("return") and GAME_OVER and GAME_LEVEL_UP then
+    if (love.keyboard.isDown("return") or TOUCH_CLICK)and GAME_OVER and GAME_LEVEL_UP then
         self.level = self.level +1
         GAME_OVER = false
         GAME_LEVEL_UP = false
@@ -33,10 +33,10 @@ function GAME_STATS:goalCheck()
         self.PPD = math.floor(self.PPD + 1.06^self.level)
 
         UPDATE_DELAY = (500 - (450*(self.level/7)) ) /1000
-    elseif love.keyboard.isDown("return") and GAME_OVER and not GAME_LEVEL_UP then
+    elseif (love.keyboard.isDown("return") or TOUCH_CLICK) and GAME_OVER and not GAME_LEVEL_UP then
         self:restart()
     end
-
+    TOUCH_CLICK = false
 end
 
 function GAME_STATS:restart()
@@ -167,26 +167,32 @@ end
 
 function GAME_STATS:update()
     if not IS_ACTIVE then return false end
+    INPUT:update()
 
-    if (love.timer.getTime() >= LAST_SIDEMOVE + KEY_DELAY and IS_ACTIVE) then
-        if (love.keyboard.isDown("left") and CURRENT_TETROMINO.x -1 >= 0) and GAMESYS:checkSide("left") then
+    if (love.timer.getTime() >= LAST_SIDEMOVE + KEY_DELAY ) then
+        if INPUT_MOVE_LEFT then
             CURRENT_TETROMINO.x = CURRENT_TETROMINO.x -1
             LAST_SIDEMOVE = love.timer.getTime()
-        elseif (love.keyboard.isDown("right") and CURRENT_TETROMINO.x +1 + #CURRENT_TETROMINO.grid < GRID_W  )  and GAMESYS:checkSide("right") then
+        elseif INPUT_MOVE_RIGHT  then
             CURRENT_TETROMINO.x = CURRENT_TETROMINO.x +1
             LAST_SIDEMOVE = love.timer.getTime()
         end
     end
 
-    if (love.keyboard.isDown("up")) and love.timer.getTime() >= LAST_ROTATE + KEY_DELAY +(100/1000) then
+    if INPUT_ROTATE and love.timer.getTime() >= LAST_ROTATE + KEY_DELAY +(100/1000) then
         GAMESYS:rotate()
         LAST_ROTATE = love.timer.getTime()
     end
 
     local UPDATE_DELAY = UPDATE_DELAY
-    if (love.keyboard.isDown("down")) then
+    if INPUT_SPEED_DOWN then
         UPDATE_DELAY = UPDATE_DELAY/8
     end
+
+    INPUT_MOVE_LEFT = false
+    INPUT_MOVE_RIGHT = false
+    INPUT_ROTATE = false
+    INPUT_SPEED_DOWN = false
 
     if not (love.timer.getTime() >= LAST_UPDATE + UPDATE_DELAY) then return end
 
